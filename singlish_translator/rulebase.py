@@ -1,38 +1,132 @@
 import json
 from json import JSONDecodeError
 
+data = {
+  "vowels": {
+      "a": "අ",
+      "A": "අ",
+      "aa": "ආ",
+      "Aa": "ආ",
+      "ae": "ඇ",
+      "Ae": "ඇ",
+      "aee": "ඈ",
+      "Aee": "ඈ",
+      "i": "ඉ",
+      "I": "ඉ",
+      "ii": "ඊ",
+      "Ii": "ඊ",
+      "u": "උ",
+      "U": "උ",
+      "uu": "ඌ",
+      "Uu": "ඌ",
+      "ERU": "ඍ",
+      "ERU'": "ඎ",
+      "IRU": "ඏ",
+      "IRU'": "ඐ",
+      "e": "එ",
+      "E": "එ",
+      "ee": "ඒ",
+      "Ee": "ඒ",
+      "ai": "ඓ",
+      "Ai": "ඓ",
+      "o": "ඔ",
+      "O": "ඔ",
+      "oo": "ඕ",
+      "Oo": "ඕ",
+      "au": "ඖ",
+      "Au": "ඖ",
+      "x": "(අං)",
+      "X": "(අඃ)"
+  },
+  "consonants": {
+      "k": "ක",
+      "c": "ක",
+      "K": "ක",
+      "kh": "ඛ",
+      "Kh": "ඛ",
+      "g": "ග",
+      "G": "ඝ",
+      "gh": "ඝ",
+      "Gh": "ඝ",
+      "ng": "ඞ",
+      "nng": "ඟ",
+      "zg": "ඟ",
+      "ch": "ච",
+      "Ch": "ඡ",
+      "j": "ජ",
+      "J": "ඣ",
+      "jh": "ඣ",
+      "ngj": "ඤ",
+      "zk": "ඤ",
+      "ny": "ඤ",
+      "Ngj": "ඥ",
+      "jny": "ඥ",
+      "nyj": "ඦ",
+      "zj": "ඦ",
+      "t": "ට",
+      "T": "ඨ",
+      "d": "ඩ",
+      "D": "ඪ",
+      "N": "ණ",
+      "zd": "ඬ",
+      "nd": "ඬ",
+      "th": "ත",
+      "Th": "ථ",
+      "dh": "ද",
+      "Dh": "ධ",
+      "n": "න",
+      "ndh": "ඳ",
+      "p": "ප",
+      "P": "ඵ",
+      "ph": "ඵ",
+      "r": "ර",
+      "l": "ල",
+      "L": "ළ",
+      "s": "ස",
+      "sh": "ශ",
+      "Sh": "ෂ",
+      "h": "හ",
+      "w": "ව",
+      "v": "ව",
+      "f": "ෆ",
+      "b": "බ",
+      "B": "භ",
+      "bh": "භ",
+      "m": "ම",
+      "mb": "ඹ",
+      "y": "ය"
+  },
+  "dependent_vowels": {
+      "aa": "ා",
+      "ae": "ැ",
+      "aae": "ෑ",
+      "i": "ි",
+      "ii": "ී",
+      "u": "ු",
+      "uu": "ූ",
+      "ERU": "ෘ",
+      "e": "ෙ",
+      "ee": "ේ",
+      "ai": "ෛ",
+      "o": "ො",
+      "oo": "ෝ",
+      "au": "ෞ",
+      "x": "ං"
+  }
+}
+
 
 class RuleBasedTransliterator:
     def __init__(self):
         """
         Initialize the SinhalaTransliterator object with the configuration file.
-
-        Raises:
-        -------
-        FileNotFoundError
-            If the config_file cannot be found or opened.
-        JSONDecodeError
-            If the config_file contains invalid JSON format.
-        KeyError
-            If the config_file does not contain the required dictionaries.
         """
         self.vowels = {}
         self.consonants = {}
         self.dependent_vowels = {}
-
-        config_file = "../singlish-alphabet.json"
-        try:
-            with open(config_file, 'r', encoding='utf-8') as file:
-                data = json.load(file)
-                self.vowels = data.get('vowels', {})
-                self.consonants = data.get('consonants', {})
-                self.dependent_vowels = data.get('dependent_vowels', {})
-        except FileNotFoundError:
-            raise FileNotFoundError(f"Config file '{config_file}' not found.")
-        except JSONDecodeError:
-            raise JSONDecodeError(f"Invalid JSON format in config file '{config_file}'.")
-        except KeyError as e:
-            raise KeyError(f"Missing required dictionary in config file '{config_file}': {str(e)}")
+        self.vowels = data.get('vowels', {})
+        self.consonants = data.get('consonants', {})
+        self.dependent_vowels = data.get('dependent_vowels', {})
 
     def __split_into_logical_groups(self, word: str) -> list:
         """
@@ -209,11 +303,11 @@ class RuleBasedTransliterator:
 
         except Exception as e:
             print(f"Error in transliterator method: {e}")
-#
-#
-# if __name__ == "__main__":
-#     transliterator = RuleBasedTransliterator()
-#     input_word = "ammaa kohomadha oyaata. \n mamanam hondhin"
-#
-#     out = transliterator.transliterator(input_word)
-#     print(out)
+
+
+if __name__ == "__main__":
+    transliterator = RuleBasedTransliterator()
+    input_word = "ammaa kohomadha oyaata. \n mamanam hondhin"
+
+    out = transliterator.transliterator(input_word)
+    print(out)

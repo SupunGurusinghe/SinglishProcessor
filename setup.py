@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 # Package meta-data.
-NAME = "singlish-translator"
+NAME = "singlish_translator"
 DESCRIPTION = "Singlish to Sinhala conversion library"
 URL = "https://github.com/SupunGurusinghe/SinglishProcessor.git"
 EMAIL = "supunsameeran@gmail.com"
