@@ -4,7 +4,7 @@ The **Sinhala Transliteration Library** is a Python library that provides a rule
 
 ## Features
 
-- Transliterate English text into Sinhala script.
+- Transliterate Singlish text into Sinhala script.
 - Follows logical splitting of words based on provided dictionaries of vowels, consonants, and dependent vowels.
 - Customizable configuration through dictionaries for vowels, consonants, and dependent vowels.
 
@@ -13,7 +13,7 @@ The **Sinhala Transliteration Library** is a Python library that provides a rule
 You can install the library using pip:
 
 ```bash
-pip install singlish-translator
+pip install singlish_translator
 ```
 
 ## Usage
@@ -21,9 +21,9 @@ pip install singlish-translator
 Here's an example of how to use the library to transliterate English text into Sinhala script:
 
 ```python
-from singlish-translator import RuleBasedTransliterator
+from singlish_translator import rulebase
 
-transliterator = RuleBasedTransliterator()
+transliterator = rulebase.RuleBasedTransliterator()
 
 input_text = "ammaa kohomadha oyaata. \n mamanam hondhin"
 transliterated_text = transliterator.transliterator(input_text)
