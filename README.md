@@ -4,7 +4,7 @@ The **Sinhala Transliteration Library** is a Python library that provides a rule
 
 ## Features
 
-- Transliterate English text into Sinhala script.
+- Transliterate Singlish text into Sinhala script.
 - Follows logical splitting of words based on provided dictionaries of vowels, consonants, and dependent vowels.
 - Customizable configuration through dictionaries for vowels, consonants, and dependent vowels.
 
